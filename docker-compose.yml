@@ -1,15 +1,16 @@
 version: "3"
 services:
-  web:
-    build: .
+  frontend:
+    image: whd1073363531/hawei:0.0.1
     ports:
-      - "3000:3000"
-    volumes:
-      - .:/home/node/code
-      - /home/node/code/node_modules
+      - "3000"
     links:
       - db
+    labels:
+      kompose.service.type: LoadBalancer
     environment:
       MONGO_CONNECTION_STRING: mongodb://db:27017
   db:
     image: mongo:3
+    ports:
+      - "27017"
