@@ -29,7 +29,7 @@ async function start() {
     path: "/add",
     async handler() {
       const res = await collection.insertOne({});
-      return { inserted: res.insertedCount };
+      return { inserted: res.insertedCount + 1 };
     }
   });
 
